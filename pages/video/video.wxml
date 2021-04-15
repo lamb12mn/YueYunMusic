@@ -1,0 +1,17 @@
+<!--pages/video/video.wxml-->
+<view class="videoContainer">
+  <view class="header">
+    <text class="iconfont iconVideoriskidentific"></text>
+    <view class="search">
+      搜索上屏
+    </view>
+    <text class="iconfont iconwangyiyunyinyuemusic1193417easyiconnet"></text>
+  </view>
+  <scroll-view scroll-x class="navScroll" enable-flex>
+    <view class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+      <view class="navContent {{navId === item.id?'active':''}}" bindtap="changeNav" id="{{item.id}}">
+        {{item.name}}
+      </view>
+    </view>   
+  </scroll-view>
+</view>
