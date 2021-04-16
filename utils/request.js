@@ -31,6 +31,7 @@ export default (url,data={},method='GET') =>{
     header:{
       cookie:wx.getStorageSync('cookies').find(item=>item.indexOf('MUSIC_U') !== -1)
     },
+    //xxxxx
     success:(res)=>{
       // console.log('请求成功：',res);
       if (data.isLogin) {//登陆请求
