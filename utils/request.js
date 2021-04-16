@@ -28,8 +28,18 @@ export default (url,data={},method='GET') =>{
     // url:config.mobileHost+url,//手机访问
     data,
     method,
+    header:{
+      cookie:wx.getStorageSync('cookies').find(item=>item.indexOf('MUSIC_U') !== -1)
+    },
     success:(res)=>{
       // console.log('请求成功：',res);
+      if (data.isLogin) {//登陆请求
+        //将用户的cookie存入本地、
+        wx.setStorage({
+          key:'cookies',
+          data:res.cookies
+        })
+      }
       resolve(res.data);//resolve修改promise的状态为成功状态resolved
     },
     fail:(err)=>{

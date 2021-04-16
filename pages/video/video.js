@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取导航数据
     this.getVideoCroupListData();
   },
 //获取导航数据
@@ -23,6 +24,17 @@ async getVideoCroupListData(){
     videoGroupList:videoGroupListData.data.slice(0,14),
     navId:videoGroupListData.data[0].id
   })
+
+    //获取视频列表数据
+    this.getVideoList(this.data.navId);
+},
+//获取视频列表数据
+ async getVideoList(navId){
+  if (!navId) {//判断navId为空串的情况
+    return;
+  }
+  let videoListData=await request('/video/group',{id:navId})
+  console.log(videoListData);
 },
 
 //点击切换导航的回调
